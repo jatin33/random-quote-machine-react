@@ -23,8 +23,8 @@ class App extends React.Component {
       this.setState({
         text:qtext,
         author:qauthor
-      });
-    });
+      })
+    }).catch((err)=>console.log('Error is '+err))
   }
   render() {
     return (
@@ -33,6 +33,7 @@ class App extends React.Component {
           <div id="quote-text" className="text-sm-center">{this.state.text}</div>
           <div id="quote-author" className="text-sm-right">- {this.state.author}</div>
           <button id="new-quote" className="btn btn-primary" onClick={this.generateRandomQuote}>New Quote</button>
+
         </div>
       </div>
     );
