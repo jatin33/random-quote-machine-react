@@ -1,12 +1,51 @@
 import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      text:"",
+      author:""
+    }
+    this.generateRandomQuote = this.generateRandomQuote.bind(this);
+  }
+  componentWillMount(){
+    let qtext,qauthor='';
+    fetch('https://api.quotable.io/random')
+    .then((Response)=> Response.json())
+    .then((data)=>{
+      qtext = data.content;
+      qauthor = data.author;
+      this.setState({
+        text:qtext,
+        author:qauthor
+      })
+    });
+  }
+  generateRandomQuote(){
+    let qtext,qauthor='';
+    fetch('https://api.quotable.io/random')
+    .then((Response)=> Response.json())
+    .then((data)=>{
+      qtext = data.content;
+      qauthor = data.author;
+      this.setState({
+        text:qtext,
+        author:qauthor
+      });
+    });
+  }
+  render() {
+    return (
+      <div className="App">
+        <div id="quote-box" className="border ">
+          <div id="quote-text" className="text-sm-center">{this.state.text}</div>
+          <div id="quote-author" className="text-sm-right">- {this.state.author}</div>
+          <button id="new-quote" className="btn btn-primary" onClick={this.generateRandomQuote}>New Quote</button>
+        </div>
+      </div>
+    );
+  }
 }
-
 export default App;
