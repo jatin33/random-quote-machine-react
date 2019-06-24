@@ -11,17 +11,7 @@ class App extends React.Component {
     this.generateRandomQuote = this.generateRandomQuote.bind(this);
   }
   componentWillMount(){
-    let qtext,qauthor='';
-    fetch('https://api.quotable.io/random')
-    .then((Response)=> Response.json())
-    .then((data)=>{
-      qtext = data.content;
-      qauthor = data.author;
-      this.setState({
-        text:qtext,
-        author:qauthor
-      })
-    });
+    this.generateRandomQuote();
   }
   generateRandomQuote(){
     let qtext,qauthor='';
