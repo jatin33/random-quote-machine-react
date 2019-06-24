@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
+script:
+  - npm test
+  - npm run build
+deploy:
+  provider: heroku
+  api_key: c8d93efb-745f-4a8a-9453-14bb20199f9e
+  app: random-quote-machine-react
