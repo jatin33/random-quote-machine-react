@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 
+
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -30,10 +31,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <div id="quote-box" className="border ">
-          <div id="quote-text" className="text-sm-center">{this.state.text}</div>
+          <div id="quote-text" className="text-sm-center">
+          <i className="fa fa-quote-left"> </i><span> {this.state.text}</span></div>
           <div id="quote-author" className="text-sm-right">- {this.state.author}</div>
           <button id="new-quote" className="btn btn-primary" onClick={this.generateRandomQuote}>New Quote</button>
-
         </div>
       </div>
     );
